@@ -60,7 +60,27 @@
             <text x="10" y="400" font-size="200px">DEMAT</text>
           </svg>
         </div>
-        <div id="editor-right">right</div>
+        <div id="editor-right">
+          <form>
+            <label for="editor_text">Image</label>
+            <br />
+            <select name="imageID" id="editor_image">
+              <option value="1">Pas d'image</option>
+            </select>
+            <hr />
+            <label for="editor_text">Texte du meme</label>
+            <br />
+            <input
+              type="text"
+              name="text"
+              id="editor_text"
+              placeholder="texte du meme"
+            />
+            <hr />
+            <button type="reset">Reset</button>
+            <button type="submit">Validation</button>
+          </form>
+        </div>
       </div>
     </div>
     <div id="footer" class="bold">Copyright &copy; TEST JAVASCRIPT 03/12</div>

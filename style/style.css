@@ -27,7 +27,7 @@ body{
     height: 100%;
 }
 #editor{
-    color: white;
+    color: black;
     height: 100%;
     display: flex;
 }
@@ -40,4 +40,7 @@ body{
 #editor>div:nth-child(2){
     min-width: 200px;
     border-left: 1px solid;
+}
+#editor_image{
+    color: red;
 }
