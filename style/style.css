@@ -1,9 +1,3 @@
-div{
-    border:1px solid black;
-}
-#Header{
-    color: blue;
-}
 #footer{
     position: absolute;
     bottom: 2px;
@@ -12,6 +6,16 @@ div{
     left: 5%;
     right: 5%;
 }
-.bold{
+#Header{
+    font-size:25px;
+    padding: 15px;
     font-weight: 900;
+    color: blueviolet;
+}
+#dot{
+    color: black;
+}
+#js{
+    font-style: italic;
+    color: crimson;
 }
