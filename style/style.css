@@ -1,50 +1,66 @@
+#js-notification{
+    font-size: xx-large;
+    font-weight: 900;
+    background-color: tomato;
+    color: white;
+    text-align: center;
+    padding: 0 10px;
+}
+
+
+
 body{
     height: 83.5vh;
 }
 #footer{
-    position: absolute;
+    position: fixed;
     bottom: 2px;
     text-align: center;
     width: 90%;
-    left: 5%;
+    left:5%;
     right: 5%;
+    z-index: 100;
 }
-#Header{
+#header{
     font-size:25px;
-    padding: 15px;
+    padding:15px;
     font-weight: 900;
-    color: cornflowerblue;
-    text-decoration: underline gray;
+    color: tomato;
+    text-decoration: underline grey;
 }
 #dot{
-    color: black;
+    color:black;
 }
 #js{
+    color:skyblue;
     font-style: italic;
-    color: coral;
 }
-#wrapper{
-    height: 100%;
-}
+#wrapper{height: 100%;}
 #editor{
-    color: black;
     height: 100%;
     display: flex;
+    text-align: center;
 }
+
 #editor>div:nth-child(1){
-    flex-grow: 1;
+    flex-grow:1;
 }
 #editor>div{
     padding: 5px 15px;
 }
 #editor>div:nth-child(2){
-    min-width: 200px;
-    border-left: 1px solid;
+    min-width:200px;
+    border-left:1px solid black;
 }
-#editor_image{
-
-
-
-    font-weight: ;
-    font-size: ;
+div.cols{
+    display:flex;
+    justify-content: space-between;
+}
+div.cols>div{
+    width:49%;
+    text-align: center;
+}
+div.cols>div input{
+    width:80px;
+    text-align: center;
 }
