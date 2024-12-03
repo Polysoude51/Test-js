@@ -23,8 +23,10 @@ body{
     font-style: italic;
     color: coral;
 }
+#wrapper{
+    height: 100%;
+}
 #editor{
-    background-color: blue;
     color: white;
     height: 100%;
     display: flex;
@@ -36,5 +38,6 @@ body{
     padding: 5px 15px;
 }
 #editor>div:nth-child(2){
-    flex-grow: 200px;
+    min-width: 200px;
+    border-left: 1px solid;
 }
