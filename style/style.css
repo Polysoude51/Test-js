@@ -1,3 +1,6 @@
+body{
+    height: 83.5vh;
+}
 #footer{
     position: absolute;
     bottom: 2px;
@@ -11,6 +14,7 @@
     padding: 15px;
     font-weight: 900;
     color: cornflowerblue;
+    text-decoration: underline gray;
 }
 #dot{
     color: black;
@@ -18,4 +22,19 @@
 #js{
     font-style: italic;
     color: coral;
+}
+#editor{
+    background-color: blue;
+    color: white;
+    height: 100%;
+    display: flex;
+}
+#editor>div:nth-child(1){
+    flex-grow: 1;
+}
+#editor>div{
+    padding: 5px 15px;
+}
+#editor>div:nth-child(2){
+    flex-grow: 200px;
 }
