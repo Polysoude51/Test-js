@@ -17,10 +17,9 @@ function loadNavbarEvents() {
     element.addEventListener("click", function (evt) {
       evt.preventDefault();
 
-      history.pushState(null,null,evt.target.href);
-
+      history.pushState(null, null, evt.target.href);
     });
   });
 }
 document.addEventListener("DOMContentLoaded", loadingDOM);
-var router=new Router();
+var router = new Router(document.getElementById(router));
