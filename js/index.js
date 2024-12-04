@@ -9,6 +9,7 @@ function loadingDOM() {
 /**
  * Fonction de chargement des events de navbar
  */
+console.log(this);
 function loadNavbarEvents() {
   var aList = document.querySelectorAll("nav a");
   aList.forEach(function (element) {
