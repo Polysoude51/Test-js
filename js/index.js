@@ -15,6 +15,9 @@ function loadNavbarEvents() {
   aList.forEach(function (element) {
     element.addEventListener("click", function (evt) {
       evt.preventDefault();
+
+      history.pushState(null,null,evt.target.href);
+
     });
   });
 }
