@@ -23,3 +23,4 @@ function loadNavbarEvents() {
   });
 }
 document.addEventListener("DOMContentLoaded", loadingDOM);
+var router=new Router();
