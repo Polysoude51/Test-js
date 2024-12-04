@@ -1,13 +1,20 @@
+/**
+ * chargement de base app
+ */
 function loadingDOM() {
   document.querySelector("#js-notification").remove();
   document.querySelector("#header button").remove();
-  document
-    .querySelector("#header button")
-    .addEventListener("click", function (evt) {
-      console.log("header", evt);
-      console.log("header clické");
-    });
-  document.querySelector("#header").innerHTML += "bla bla";
+  loadNavbarEvents();
 }
-
+/**
+ * Fonction de chargement des events de navbar
+ */
+function loadNavbarEvents() {
+  var aList = document.querySelectorAll("nav a");
+  aList.forEach(function (element) {
+    element.addEventListener("click", function (evt) {
+      evt.preventDefault();
+    });
+  });
+}
 document.addEventListener("DOMContentLoaded", loadingDOM);
