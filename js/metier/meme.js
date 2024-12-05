@@ -12,7 +12,7 @@ class Meme {
   #endpoint = "/memes";
   constructor() {}
   save() {
-    console.log("save at" + this.#endpoint, this);
+    console.log("save at" +this.id + this.#endpoint, this);
     this.publicSave();
     this.#privateSave();
   }
