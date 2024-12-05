@@ -1,5 +1,5 @@
 /**
- * chargement de base app
+ * chargement de base de mon app
  */
 function loadingDOM() {
   document.querySelector("#js-notification").remove();
@@ -10,16 +10,20 @@ function loadingDOM() {
 /**
  * Fonction de chargement des events de navbar
  */
-console.log(this);
 function loadNavbarEvents() {
-  var aList = document.querySelectorAll("nav a");
+  var aList = document.querySelectorAll("a");
+  // for(var i=0;i<aList.length;i++){
+  //   aList[i].addEventListener('click',function(evt){
+  //     evt.preventDefault();
+  //     console.log('navigate to ',evt.target.href);
+  //   })
+  // }
   aList.forEach(function (element) {
-    element.addEventListener("click", function (evt) {
+    element.addEventListener("click", (evt) => {
       evt.preventDefault();
-
-      history.pushState(null, null, evt.target.href);
+      history.pushState(null,null,evt.target.href);
     });
   });
 }
 document.addEventListener("DOMContentLoaded", loadingDOM);
-var router = new Router(document.getElementById(router));
+var router=new Router(document.getElementById('wrapper'));
