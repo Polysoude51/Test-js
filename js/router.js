@@ -1,3 +1,21 @@
+var routes = [
+  {
+    name: "Thumbnail",
+    path: "/thumbnail",
+    url: "/pages/thumbnail/thumbnail.html",
+  },
+  {
+    name: "Editor",
+    path: "/edit",
+    url: "/pages/editor/editor.html",
+    loaderJs: loadEditorEvent,
+  },
+  {
+    name: "Home",
+    path: "/",
+    url: "/pages/home/home.html",
+  },
+];
 /* besoins routeur
 public -> sur this
     +page actuelle champs lecture
@@ -8,26 +26,59 @@ privé pas sur this
     +modif contenu(loadEvents)
     +recuperation du contenu de page depuis le reseau
 */
-function Router(rootNode,rootFolderOfTemplates = "/pages") {
+function Router(rootNode, rootFolderOfTemplates = "/pages") {
   /*definitions locales(interne) des propriétés et fonctions */
-  var currentRoute = location.pathname;
+  /**
+   * route courrante avec informations de route (url, template, param,...)
+   */
+  var currentRoute = undefined;
+  /**
+   * change path url and store route as current and set params
+   * @param {string} pathName
+   */
   function changePathName(pathName) {
     history.pushState(null, null, pathName);
-    currentRoute = location.pathname;
+    var route = {};
+    route.url = rootFolderOfTemplates;
+    switch (pathName) {
+      case "/thumbnail":
+        route.url += "/thumbnail/thumbnail.html";
+        break;
+      case "/editor":
+        route.url += "/editor/editor.html";
+        route.loaderJs = loadEditorEvent;
+        break;
+      default:
+        route.url += "/home/home.html";
+        break;
+    }
+    route.pathName = pathName;
+    currentRoute = route;
   }
-  function loadContentInPage(eventLoader) {}
-  function getContentFromNetwork(contentUrl) {
+  /**
+   * chargement DOM du template
+   * @param {object} routeObject
+   */
+  function loadContentInPage(routeObject) {
+    rootNode.innerHTML = routeObject.template;
+    if (typeof routeObject.loaderJs === "function") {
+      routeObject.loaderJs();
+    }
+  }
+  function getContentFromNetwork(routeObject) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", contentUrl);
+    xhr.open("GET", routeObject.url);
     xhr.onreadystatechange = function (evt) {
       if (xhr.readyState < XMLHttpRequest.DONE) {
         return;
       }
       if (xhr.status >= 400) {
         console.log("erreur" + xhr.status);
+        return;
       }
       console.log(xhr.responseText);
-      rootNode.innerHTML=xhr.responseText;
+      routeObject.template = xhr.responseText;
+      loadContentInPage(routeObject);
     };
     xhr.send();
   }
@@ -49,19 +100,7 @@ function Router(rootNode,rootFolderOfTemplates = "/pages") {
   this.navigate = navigate;
   function navigate(pathName = "/") {
     changePathName(pathName);
-    var url = rootFolderOfTemplates;
-    switch (pathName) {
-      case "/thumbnail":
-        url += "/thumbnail/thumbnail.html";
-        break;
-      case "/editor":
-        url += "/editor/editor.html";
-        break;
-      default:
-        url += "/home/home.html";
-        break;
-    }
-    getContentFromNetwork(url);
-    loadContentInPage();
+    getContentFromNetwork(currentRoute);
   }
+  navigate(location.pathname);
 }
