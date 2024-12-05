@@ -7,14 +7,15 @@ class Images extends Array {
     super.find(params);
   }
   load() {
-    const p=fetch(`http://localhost:5679${this.#endpoint}`,{
-        header:{Accept:"application/json"},
-        method:"GET",
+    return fetch(`http://localhost:5679${this.#endpoint}`, {
+      header: { Accept: "application/json" },
+      method: "GET",
+    }).then((r) => {
+      console.log(r);
+      return r.json();
     })
-    .then((r)=>r.json());
-    p.then((a)=>Object.assign(this,a));
-
+    .then((a) => Object.assign(this, a));
   }
 }
-let images = new Images();
-images.load();
+const images = new Images();
+const promiseImage = images.load();
