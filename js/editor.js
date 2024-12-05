@@ -12,7 +12,10 @@ function loadEditorEvent() {
     console.log("form submit");
   });
 }
-
+/**
+ *
+ * @param {Images} images
+ */
 const loadSelectImagesInForm = (images) => {
   const select = document.forms["editor-form"]["imageId"];
   const optionBase = select.children[0];
@@ -24,5 +27,5 @@ const loadSelectImagesInForm = (images) => {
     optionClone.innerHTML = image.name;
     select.appendChild(optionClone);
   });
-  //debbuger;
+  // debugger;
 };
